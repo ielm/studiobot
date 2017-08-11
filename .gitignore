@@ -3,4 +3,5 @@ node_modules
 components/routes/_*
 .env
 img
-
+interactions
+orig_readme

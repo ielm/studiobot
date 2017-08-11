@@ -1,9 +1,9 @@
 {
-  "name": "CritBot",
+  "name": "StudioBot",
   "description": "A helpful bot for creative classrooms",
   "repository": "https://github.com/howdyai/botkit-starter-slack",
-  "keywords": ["node", "bots", "slack","botkit"],
-  "website": "https://studio.botkit.ai/",
+  "keywords": ["node", "bots", "slack","botkit", "studio"],
+  "website": "https://studiobot.glitch.com",
   "success_url":"/",
   "addons":[
     {

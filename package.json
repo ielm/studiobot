@@ -1,7 +1,7 @@
 {
-  "name": "botkit-starter-slack",
+  "name": "StudioBot",
   "version": "0.0.2",
-  "description": "A starter kit for building a custom Slack bot with Botkit Studio",
+  "description": "A helpful bot for creative classrooms",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
@@ -32,6 +32,6 @@
     "chatbots",
     "slack"
   ],
-  "author": "ben@howdy.ai",
+  "author": "ivan@ivanleon.net",
   "license": "ISC"
 }
