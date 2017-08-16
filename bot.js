@@ -14,7 +14,6 @@ studiobot.glitch.me
 var env = require('node-env-file');
 env(__dirname + '/.env');
 
-
 // If any envrironment variables are missing, throw an Error
 if (!process.env.clientId || !process.env.clientSecret || !process.env.PORT) {
   console.log('Error: Specify clientId clientSecret and PORT in environment');
