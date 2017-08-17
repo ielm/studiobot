@@ -1,3 +1,5 @@
+// Runs whenever a new member is added to the team
+
 var debug = require('debug')('botkit:onboarding');
 
 module.exports = function(controller) {

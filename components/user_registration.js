@@ -22,7 +22,7 @@ module.exports = function(controller) {
                     url: payload.identity.url,
                     name: payload.identity.team,
                 };
-                var new_team= true;
+                var new_team = true;
             }
 
             team.bot = {
