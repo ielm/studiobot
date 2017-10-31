@@ -1,16 +1,29 @@
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-TaskBot for Anthony Titus Fall Studio
+/*
 
-Author: Ivan Leon
-studiobot.glitch.me
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    This is a sample bot that provides a simple todo list function
+    and demonstrates the Botkit storage system.
+
+    Botkit comes with a generic storage system that can be used to
+    store arbitrary information about a user or channel. Storage
+    can be backed by a built in JSON file system, or one of many
+    popular database systems.
+
+    See:
+
+        botkit-storage-mongo
+        botkit-storage-firebase
+        botkit-storage-redis
+        botkit-storage-dynamodb
+        botkit-storage-mysql
+
+*/
 
 module.exports = function(controller) {
 
     // listen for someone saying 'tasks' to the bot
     // reply with a list of current tasks loaded from the storage system
     // based on this user's id
-    controller.hears(['tasks','todo', 'task list', 'list'], 'direct_message,direct_mention,mention', function(bot, message) {
+    controller.hears(['tasks','todo'], 'direct_message', function(bot, message) {
 
         // load user from storage...
         controller.storage.users.get(message.user, function(err, user) {
@@ -57,7 +70,7 @@ module.exports = function(controller) {
                         channel: message.channel,
                         timestamp: message.ts
                     });
-                    bot.reply(message, "I have added '" + message.match[1] + "' to your tasks list.")
+                    bot.reply(message, "I have added " + message.match[1] + " to your tasks list.")
                 }
 
             });
@@ -66,7 +79,7 @@ module.exports = function(controller) {
     });
 
     // listen for a user saying "done <number>" and mark that item as done.
-    controller.hears(['done (.*)'],'direct_message,direct_mention,mention', function(bot, message) {
+    controller.hears(['done (.*)'],'direct_message', function(bot, message) {
 
         var number = message.match[1];
 
@@ -76,8 +89,9 @@ module.exports = function(controller) {
 
             // adjust for 0-based array index
             number = parseInt(number) - 1;
-            var newTask = []
+
             controller.storage.users.get(message.user, function(err, user) {
+                bot.reply(message, user.tasks.length)
 
                 if (!user) {
                     user = {};
@@ -91,32 +105,14 @@ module.exports = function(controller) {
 
                     var item = user.tasks.splice(number,1);
 
-                    newTask = user.tasks;
-
-
-                    // reply with a strikethrough message...1
+                    // reply with a strikethrough message...
                     bot.reply(message, '~' + item + '~');
-
-
 
                     if (user.tasks.length > 0) {
                         bot.reply(message, 'Here are our remaining tasks:\n' + generateTaskList(user));
                     } else {
                         bot.reply(message, 'Your list is now empty!');
                     }
-                controller.storage.users.save(user, function(err,saved){
-                  if (err) {
-                    bot.reply(message, 'I experienced an error adding your task: ' + err);
-                  } else {
-                      bot.api.reactions.add({
-                          name: 'thumbsup',
-                          channel: message.channel,
-                          timestamp: message.ts
-                      });
-                      bot.reply(message, "I have removed '" + item + "' to your tasks list.")
-                  }
-                })
-
                 }
             });
 

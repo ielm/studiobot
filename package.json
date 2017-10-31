@@ -21,7 +21,7 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/howdyai/botkit-starter-slack.git"
+    "url": "https://git-codecommit.us-east-2.amazonaws.com/v1/repos/studiobot-00"
   },
   "bugs": {
     "url": "https://github.com/howdyai/botkit-starter-slack/issues"

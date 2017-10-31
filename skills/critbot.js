@@ -1,7 +1,7 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-CritBot for Anthony Titus Fall Studio 
+CritBot for Anthony Titus Fall Studio
 
-Author: Ivan Leon  
+Author: Ivan Leon
 studiobot.glitch.me
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
@@ -17,7 +17,9 @@ module.exports = function(controller) {
         controller.studio.run(bot, 'crit-launch', message.user, message.channel).catch(function(err) {
             debug('Error: encountered an error loading crit launch script from Botkit Studio:', err);
         });
-      
+
+
+
         // Load user from storage
 //         controller.storage.users.get(message.user, function(err, user) {
 
@@ -86,7 +88,7 @@ module.exports = function(controller) {
 //             number = parseInt(number) - 1;
 //             var newTask = []
 //             controller.storage.users.get(message.user, function(err, user) {
-        
+
 //                 if (!user) {
 //                     user = {};
 //                     user.id = message.user;
@@ -98,14 +100,14 @@ module.exports = function(controller) {
 //                 } else {
 
 //                     var item = user.tasks.splice(number,1);
-                  
+
 //                     newTask = user.tasks;
-                    
+
 
 //                     // reply with a strikethrough message...1
 //                     bot.reply(message, '~' + item + '~');
-                  
-                    
+
+
 
 //                     if (user.tasks.length > 0) {
 //                         bot.reply(message, 'Here are our remaining tasks:\n' + generateTaskList(user));
@@ -124,10 +126,10 @@ module.exports = function(controller) {
 //                       bot.reply(message, "I have removed '" + item + "' to your tasks list.")
 //                   }
 //                 })
-                
+
 //                 }
 //             });
-          
+
 //         }
 
 //     });

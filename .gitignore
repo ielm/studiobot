@@ -5,3 +5,5 @@ components/routes/_*
 img
 interactions
 orig_readme
+.glitch-assets
+glitch_readme.md
